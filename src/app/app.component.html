@@ -1,17 +1,32 @@
 <mat-sidenav-container class="sidenav-container">
   <mat-sidenav #sidenav mode="side" opened class="sidenav">
     <mat-toolbar>
-      <span>Dashboard</span>
+      <span>Course Platform</span>
     </mat-toolbar>
     <mat-nav-list>
-      <!-- Add your sidebar items here -->
-      <a mat-list-item href="#">
-        <mat-icon>home</mat-icon>
-        <span>Home</span>
-      </a>
-      <a mat-list-item href="#">
+      <a mat-list-item routerLink="/dashboard">
         <mat-icon>dashboard</mat-icon>
         <span>Dashboard</span>
+      </a>
+      <a mat-list-item routerLink="/courses">
+        <mat-icon>school</mat-icon>
+        <span>Cursos</span>
+      </a>
+      <a mat-list-item routerLink="/students">
+        <mat-icon>people</mat-icon>
+        <span>Estudiantes</span>
+      </a>
+      <a mat-list-item routerLink="/assignments">
+        <mat-icon>assignment</mat-icon>
+        <span>Tareas</span>
+      </a>
+      <a mat-list-item routerLink="/analytics">
+        <mat-icon>analytics</mat-icon>
+        <span>Analiticas</span>
+      </a>
+      <a mat-list-item routerLink="/settings">
+        <mat-icon>settings</mat-icon>
+        <span>Configuracion</span>
       </a>
     </mat-nav-list>
   </mat-sidenav>
@@ -21,18 +36,21 @@
       <button mat-icon-button (click)="sidenav.toggle()">
         <mat-icon>menu</mat-icon>
       </button>
-      <span>My Application</span>
+      <span>Course Dashboard</span>
       <span class="toolbar-spacer"></span>
+      <button mat-icon-button>
+        <mat-icon>notifications</mat-icon>
+      </button>
+      <button mat-icon-button>
+        <mat-icon>account_circle</mat-icon>
+      </button>
       <mat-slide-toggle (change)="toggleDarkTheme($event.checked)">
-        Dark Mode
+        Color
       </mat-slide-toggle>
     </mat-toolbar>
 
-    <!-- Main content -->
     <div class="content">
-      <h1 class="text-3xl font-bold underline">
-        Hello world!
-      </h1>
+      <router-outlet></router-outlet>
     </div>
   </mat-sidenav-content>
 </mat-sidenav-container>

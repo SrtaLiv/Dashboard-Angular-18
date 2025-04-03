@@ -1,7 +1,5 @@
-// Import Angular Material theming
 @use '@angular/material' as mat;
 
-// Include Material core styles (only once!)
 @include mat.core();
 
 // Define light theme
@@ -24,7 +22,7 @@ $light-theme: mat.define-theme((
 $dark-theme: mat.define-theme((
   color: (
     theme-type: dark,
-    primary: mat.$violet-palette,
+    primary: mat.$red-palette,
     tertiary: mat.$azure-palette,
   ),
   typography: (
@@ -37,19 +35,23 @@ $dark-theme: mat.define-theme((
 ));
 
 // Base styles
-html, body { 
+body{ 
   height: 100%; 
+  @include mat.core-theme($light-theme);
+  @include mat.button-theme($light-theme); // especificos
+  @include mat.all-component-themes($light-theme); // todos los componentes
+  @include mat.checkbox-typography($light-theme);
 }
 
-body { 
-  margin: 0; 
-  background-color: #ffffff; // Light mode background
-  color: rgba(0, 0, 0, 0.87); // Light mode text
-  transition: background-color 0.3s ease; // Smooth transition
-}
 
-// Dark theme styles
 body.dark-theme {
-  background-color: #121212; // Material dark theme background
-  color: #ffffff; // Dark mode text
+    @include mat.all-component-themes($dark-theme); // todos los componentes
+  --background-color: #000000;
+  --surface-color: #1e1e1e;
+  --text-color: #ffffff;
+  --primary-color: #7b1fa2;
+  --secondary-color: #ff4081;
+  --sidenav-background: #1e1e1e;
+  --card-background: #242424;
+  --hover-color: rgba(255, 255, 255, 0.08);
 }

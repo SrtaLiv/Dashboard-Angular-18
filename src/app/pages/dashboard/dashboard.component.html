@@ -1,0 +1,17 @@
+<div class="dashboard-container">
+  <h1>Dashboard Overview</h1>
+  
+  <div class="stats-grid">
+    <mat-card *ngFor="let stat of stats" class="stat-card">
+      <mat-card-content>
+        <div class="stat-icon" [style.background-color]="stat.color + '20'">
+          <mat-icon [style.color]="stat.color">{{stat.icon}}</mat-icon>
+        </div>
+        <div class="stat-info">
+          <h2>{{stat.title}}</h2>
+          <p class="stat-value">{{stat.value}}</p>
+        </div>
+      </mat-card-content>
+    </mat-card>
+  </div>
+</div>
