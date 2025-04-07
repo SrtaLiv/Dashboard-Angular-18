@@ -1,0 +1,68 @@
+<div class="settings-container">
+  <h1 class="settings-title">Settings</h1>
+
+  <mat-card class="settings-card">
+    <mat-card-header>
+      <mat-card-title>Account Settings</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <div class="settings-section">
+        <div class="profile-section">
+          <div class="profile-image">
+            <img [src]="profileImage || 'https://i.pravatar.cc/150?img=12'" alt="Profile picture">
+            <input type="file" #fileInput style="display: none" accept="image/*" (change)="onFileSelected($event)">
+            <button mat-mini-fab color="primary" class="change-photo-btn" (click)="fileInput.click()">
+              <mat-icon>photo_camera</mat-icon>
+            </button>
+          </div>
+          <div class="profile-info">
+            <h3>Olivia</h3>
+            <p>Olivia.todesco</p>
+            <button mat-stroked-button color="primary">Edit Profile</button>
+          </div>
+        </div>
+      </div>
+    </mat-card-content>
+  </mat-card>
+
+
+
+  <mat-card class="settings-card">
+    <mat-card-header>
+      <mat-card-title>Notifications</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <div class="settings-section">
+        <mat-slide-toggle [(ngModel)]="emailNotifications" color="primary">Email Notifications</mat-slide-toggle>
+        <mat-slide-toggle [(ngModel)]="pushNotifications" color="primary">Push Notifications</mat-slide-toggle>
+        <mat-slide-toggle [(ngModel)]="courseUpdates" color="primary">Course Updates</mat-slide-toggle>
+      </div>
+    </mat-card-content>
+  </mat-card>
+
+  <mat-card class="settings-card">
+    <mat-card-header>
+      <mat-card-title>Privacy</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <div class="settings-section">
+        <mat-slide-toggle [(ngModel)]="showProfile" color="primary">Show my profile to other users</mat-slide-toggle>
+        <mat-slide-toggle [(ngModel)]="shareActivity" color="primary">Share my course activity</mat-slide-toggle>
+        
+        <mat-form-field appearance="outline" class="full-width">
+          <mat-label>Data Retention</mat-label>
+          <mat-select [(value)]="dataRetention">
+            <mat-option value="30">30 days</mat-option>
+            <mat-option value="90">90 days</mat-option>
+            <mat-option value="365">1 year</mat-option>
+            <mat-option value="0">Forever</mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+    </mat-card-content>
+  </mat-card>
+
+  <div class="settings-actions">
+    <button mat-raised-button color="primary">Save Changes</button>
+  </div>
+</div>

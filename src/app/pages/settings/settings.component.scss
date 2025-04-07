@@ -1,0 +1,94 @@
+.settings-container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.settings-title {
+  margin-bottom: 24px;
+  color: #333;
+  font-weight: 500;
+}
+
+.settings-card {
+  margin-bottom: 20px;
+  border-radius: 8px;
+}
+
+.settings-section {
+  padding: 16px 0;
+  
+  mat-slide-toggle {
+    display: block;
+    margin-bottom: 16px;
+  }
+}
+
+.profile-section {
+  display: flex;
+  align-items: center;
+  margin-bottom: 16px;
+}
+
+.profile-image {
+  position: relative;
+  margin-right: 24px;
+  
+  img {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    object-fit: cover;
+  }
+  
+  .change-photo-btn {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    transform: translate(25%, 25%);
+  }
+}
+
+.profile-info {
+  h3 {
+    margin: 0 0 4px 0;
+    font-weight: 500;
+  }
+  
+  p {
+    margin: 0 0 16px 0;
+    color: #666;
+  }
+}
+
+.full-width {
+  width: 100%;
+  margin-bottom: 16px;
+}
+
+.settings-actions {
+  display: flex;
+  gap: 16px;
+  margin-top: 24px;
+}
+
+// Responsive adjustments
+@media (max-width: 600px) {
+  .profile-section {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  
+  .profile-image {
+    margin-right: 0;
+    margin-bottom: 16px;
+  }
+  
+  .settings-actions {
+    flex-direction: column;
+    
+    button {
+      width: 100%;
+    }
+  }
+}

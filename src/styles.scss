@@ -35,23 +35,17 @@ $dark-theme: mat.define-theme((
 ));
 
 // Base styles
-body{ 
-  height: 100%; 
-  @include mat.core-theme($light-theme);
-  @include mat.button-theme($light-theme); // especificos
-  @include mat.all-component-themes($light-theme); // todos los componentes
-  @include mat.checkbox-typography($light-theme);
+body {
+  height: 100%;
+  @include mat.all-component-themes($light-theme); // Include all component themes once
 }
 
-
 body.dark-theme {
-    @include mat.all-component-themes($dark-theme); // todos los componentes
-  --background-color: #000000;
-  --surface-color: #1e1e1e;
-  --text-color: #ffffff;
-  --primary-color: #7b1fa2;
-  --secondary-color: #ff4081;
-  --sidenav-background: #1e1e1e;
-  --card-background: #242424;
-  --hover-color: rgba(255, 255, 255, 0.08);
+  @include mat.all-component-themes($dark-theme); // Include all component themes once
+}
+
+.sidenav-container {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
 }

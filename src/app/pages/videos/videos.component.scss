@@ -1,0 +1,53 @@
+.video-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); // Esta línea es clave
+  gap: 24px;
+  padding: 24px;
+}
+
+.video-card {
+  max-width: 400px;
+  margin: 0 auto;
+  
+  mat-card-header {
+    margin-bottom: 16px;
+  }
+
+  mat-card-title {
+    font-size: 18px;
+    line-height: 1.4;
+  }
+
+  mat-card-content {
+    margin: 16px 0;
+    
+    p {
+      display: -webkit-box;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+  }
+
+  mat-card-actions {
+    padding: 8px;
+    display: flex;
+    gap: 8px;
+
+    button {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+  }
+
+  img {
+    object-fit: cover;
+    height: 200px;
+  }
+}
+
+h1{
+  font-size: medium;
+  font-weight: 500;
+}

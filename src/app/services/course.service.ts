@@ -1,28 +1,17 @@
-import { Component } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { MatCardModule } from '@angular/material/card';
-import { MatButtonModule } from '@angular/material/button';
-import { MatIconModule } from '@angular/material/icon';
-import { MatChipsModule } from '@angular/material/chips';
-import { MatDialog } from '@angular/material/dialog';
-import { CourseDialogComponent } from './course-dialog/course-dialog.component';
-import { Router } from '@angular/router';
-import { RouterModule } from '@angular/router';
+import { Injectable } from '@angular/core';
 
-@Component({
-    selector: 'app-courses',
-    standalone: true,
-    imports: [CommonModule, MatCardModule, MatButtonModule, MatIconModule, MatChipsModule, RouterModule],
-    templateUrl: './courses.component.html',
-    styleUrls: ['./courses.component.scss']
+@Injectable({
+  providedIn: 'root'
 })
-export class CoursesComponent {
+export class CourseService {
+   
+    
     courses = [
         {
             id: 1,
             title: 'Introduction to Web Development',
             instructor: 'John Doe',
-            image: 'https://media.licdn.com/dms/image/v2/D5612AQE4HCONpl5LIw/article-cover_image-shrink_720_1280/article-cover_image-shrink_720_1280/0/1682852665807?e=2147483647&v=beta&t=7qgNtHQhzJdje6LxEu2cPHFBAapX2D463YUWb3TCnyY',
+            image: 'https://picsum.photos/seed/webdev/300/200',
             duration: '8 weeks',
             level: 'Beginner',
             students: 156,
@@ -80,33 +69,24 @@ export class CoursesComponent {
         }
     ];
 
-    constructor(private dialog: MatDialog, private router: Router) { }
+  getCourses() {
+    return this.courses;
+  }
 
-    createCourse(): void {
-        const dialogRef = this.dialog.open(CourseDialogComponent);
+  getCourseById(id: number) {
+    return this.courses.find(course => course.id === id);
+  }
 
-        dialogRef.afterClosed().subscribe(result => {
-            if (result) {
-                result.id = this.courses.length + 1;
-                this.courses.push(result);
-            }
-        });
+  addCourse(course: any) {
+    course.id = this.courses.length + 1;
+    this.courses.push(course);
+    return course;
+  }
+
+  updateCourse(updatedCourse: any) {
+    const index = this.courses.findIndex(c => c.id === updatedCourse.id);
+    if (index !== -1) {
+      this.courses[index] = updatedCourse;
     }
-
-    editCourse(course: any): void {
-        const dialogRef = this.dialog.open(CourseDialogComponent, {
-            data: course
-        });
-
-        dialogRef.afterClosed().subscribe(result => {
-            if (result) {
-                const index = this.courses.findIndex(c => c.id === course.id);
-                this.courses[index] = { ...result };
-            }
-        });
-    }
-
-    viewCourse(course: any): void {
-        this.router.navigate(['/courses', course.id]);
-    }
+  }
 }

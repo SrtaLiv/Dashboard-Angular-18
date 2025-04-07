@@ -20,7 +20,7 @@ import { MatChipsModule } from '@angular/material/chips';
     MatChipsModule
   ],
   template: `
-    <h2 mat-dialog-title>{{data ? 'Edit Course' : 'Create Course'}}</h2>
+    <h2 mat-dialog-title>{{data ? 'Editar curso' : 'Crear curso'}}</h2>
     <mat-dialog-content>
       <form #courseForm="ngForm">
         <mat-form-field appearance="fill" class="full-width">
@@ -75,6 +75,7 @@ export class CourseDialogComponent {
   course: any;
 
   constructor(
+    // docu: https://v18.material.angular.io/components/dialog/examples
     public dialogRef: MatDialogRef<CourseDialogComponent>,
     @Inject(MAT_DIALOG_DATA) public data: any
   ) {
